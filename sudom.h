@@ -1,16 +1,16 @@
+#include <stdbool.h>
 
 #ifndef SUDOM_H
 #define SUDOM_H
 
-struct Sudoku {
-  int** table;
-  int*** options;
-};
+typedef int** SUDOKU;
 
-typedef struct Sudoku SUDOKU;
-
-SUDOKU* create_sudoku();
-void free_sudoku(SUDOKU* s);
-void init_sudoku(SUDOKU* s);
+SUDOKU create_sudoku();
+void init_sudoku(SUDOKU s);
+void print_sudoku(SUDOKU s);
+void free_sudoku(SUDOKU s);
+bool is_safe(SUDOKU s, int row, int col, int value);
+void solve_rec(SUDOKU s, int row, int col);
+void solve(SUDOKU s);
 
 #endif
